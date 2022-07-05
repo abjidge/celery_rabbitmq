@@ -6,7 +6,7 @@ simple_app = Celery('simple_worker',
                     broker='amqp://admin:password@localhost:5672',
                     backend='rpc://')
 
-app.conf.task_ignore_result = True
+simple_app.conf.task_ignore_result = True
 
 @app.route('/simple_start_task')
 def call_method():
