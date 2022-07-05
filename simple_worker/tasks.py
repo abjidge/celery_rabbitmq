@@ -8,9 +8,9 @@ app = Celery('tasks',
              broker='amqp://admin:password@localhost:5672',
              backend='rpc://')
 
-app.conf.task_ignore_result = True
-
-@app.task(ignore_result=True)
+# app.conf.task_ignore_result = True
+# ignore_result=True
+@app.task()
 def longtime_add(x, y):
     logger.info('Got Request - Starting work ')
     # time.sleep(4)
