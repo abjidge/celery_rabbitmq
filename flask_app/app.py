@@ -12,7 +12,7 @@ simple_app.conf.task_ignore_result = True
 def call_method():
     app.logger.info("Invoking Method ")
     # r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2})
-     r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2},queue='queue_name_1')
+    r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2},queue='queue_name_1')
     app.logger.info(r.backend)
     return r.id
 
