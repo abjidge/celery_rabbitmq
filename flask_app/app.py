@@ -2,7 +2,7 @@ from flask import Flask
 from celery import Celery
 
 app = Flask(__name__)
-simple_app = Celery('simple_worker12',
+simple_app = Celery('simple_worker',
                     broker='amqp://admin:password@localhost:5672',
                     backend='rpc://')
 
@@ -11,7 +11,8 @@ simple_app.conf.task_ignore_result = True
 @app.route('/simple_start_task')
 def call_method():
     app.logger.info("Invoking Method ")
-    r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2})
+    # r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2})
+     r = simple_app.send_task('tasks.longtime_add', kwargs={'x': 1, 'y': 2},queue='queue_name_1')
     app.logger.info(r.backend)
     return r.id
 
