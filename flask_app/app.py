@@ -2,7 +2,7 @@ from flask import Flask
 from celery import Celery
 
 app = Flask(__name__)
-simple_app = Celery('simple_worker',
+simple_app = Celery('simple_worker12',
                     broker='amqp://admin:password@localhost:5672',
                     backend='rpc://')
 
